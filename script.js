@@ -82,4 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(launchFireworks, 500);
 
+    // --- Music Controls ---
+    const musicControl = document.getElementById('music-control');
+    const backgroundMusic = document.getElementById('background-music');
+
+    if (musicControl && backgroundMusic) {
+        // Attempt to play muted audio on page load
+        backgroundMusic.play().catch(error => {
+            console.log("Autoplay was prevented.", error);
+            // Browser prevented autoplay, user must click to start.
+        });
+
+        musicControl.addEventListener('click', () => {
+            if (backgroundMusic.muted) {
+                backgroundMusic.muted = false;
+                musicControl.classList.add('playing');
+            } else {
+                backgroundMusic.muted = true;
+                musicControl.classList.remove('playing');
+            }
+        });
+    }
 });

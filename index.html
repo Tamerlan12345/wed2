@@ -22,10 +22,16 @@
 <body>
 
     <div id="entry-screen" class="entry-screen">
+        <div class="birds-container">
+            <div class="bird bird-1"></div>
+            <div class="bird bird-2"></div>
+            <div class="bird bird-3"></div>
+            <div class="bird bird-4"></div>
+        </div>
         <div class="entry-content">
             <h2 class="entry-title">Тамерлан & Ясмина</h2>
             <p class="entry-text">Приглашают вас на свою свадьбу</p>
-            <button id="enter-button" class="enter-button">Войти</button>
+            <button id="enter-button" class="enter-button">Открыть волшебное приглашение</button>
         </div>
     </div>
 
@@ -116,7 +122,10 @@
 
         <section class="location-section">
             <h3 class="section-title">Место Проведения</h3>
-            <p class="venue-name">Банкетный зал "Premier Hall"</p>
+            <div class="venue-container">
+                <svg class="venue-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <p class="venue-name">Банкетный зал "Premier Hall"</p>
+            </div>
             <a href="https://2gis.kz/almaty/firm/70000001024247901" target="_blank" class="address-link">улица Умурзакова, 76, Алматы</a>
             <div id="map" class="map-wrapper">
                 <!-- 2GIS Map will be initialized here by script.js -->

@@ -50,6 +50,71 @@ html {
     display: none;
 }
 
+/* Entry Screen */
+.entry-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333; /* Fallback */
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    transition: opacity 1s ease, visibility 1s ease;
+}
+.entry-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('photo_5341489142447602236_y.jpg') center center/cover no-repeat;
+    filter: blur(5px) brightness(0.7);
+    z-index: -1;
+}
+
+.entry-content {
+    animation: fade-in-up 1s ease-out;
+}
+
+.entry-title {
+    font-family: var(--font-primary);
+    font-size: 4rem;
+    color: var(--accent-gold);
+}
+
+.entry-text {
+    font-size: 1.2rem;
+    margin: 1rem 0 2rem;
+}
+
+.enter-button {
+    background: var(--accent-gold);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.enter-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.entry-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
 body {
     font-family: var(--font-secondary);
     background-color: var(--white);
@@ -287,7 +352,28 @@ img {
     font-size: 2rem;
     margin-bottom: 2rem;
 }
+.address-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--accent-rose);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rose);
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+.address-link:hover {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+.date-text-section {
+    padding: 2rem 1.5rem;
+    background-color: var(--bg-blush);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
 .map-wrapper {
+    height: 450px;
     max-width: 900px;
     margin: 0 auto;
     border-radius: 8px;

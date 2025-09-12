@@ -15,8 +15,19 @@
 
     <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <!-- 2GIS Map API -->
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 </head>
 <body>
+
+    <div id="entry-screen" class="entry-screen">
+        <div class="entry-content">
+            <h2 class="entry-title">Тамерлан & Ясмина</h2>
+            <p class="entry-text">Приглашают вас на свою свадьбу</p>
+            <button id="enter-button" class="enter-button">Войти</button>
+        </div>
+    </div>
 
     <div id="music-control" class="music-control">
         <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
@@ -87,10 +98,10 @@
                 <h4 class="details-title">Дресс-код</h4>
                 <p>Мы будем благодарны, если вы выберете наряды в вечернем стиле, придерживаясь нашей цветовой палитры.</p>
                 <div class="color-palette">
-                    <span class="color-swatch" style="background-color: #2F4F4F;"></span>
-                    <span class="color-swatch" style="background-color: #C0C0C0;"></span>
-                    <span class="color-swatch" style="background-color: #F5F5F5; border: 1px solid #ddd;"></span>
-                    <span class="color-swatch" style="background-color: #D4AF37;"></span>
+                    <span class="color-swatch" style="background-color: #333333;"></span>
+                    <span class="color-swatch" style="background-color: #D9AAB7;"></span>
+                    <span class="color-swatch" style="background-color: #E1C49A;"></span>
+                    <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span>
                 </div>
             </div>
             <div class="details-column">
@@ -99,11 +110,16 @@
             </div>
         </section>
 
+        <section class="date-text-section">
+             <p>Торжество состоится 25 октября 2025 года.</p>
+        </section>
+
         <section class="location-section">
             <h3 class="section-title">Место Проведения</h3>
-            <p class="venue-name">Горный курорт "Эльбрус"</p>
-            <div class="map-wrapper">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a1d7e2d9a6dfb4c73028c293121f64749f783084d5162a483e58315181789b7&amp;source=constructor" width="100%" height="450" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+            <p class="venue-name">Банкетный зал "Premier Hall"</p>
+            <a href="https://2gis.kz/almaty/firm/70000001024247901" target="_blank" class="address-link">улица Умурзакова, 76, Алматы</a>
+            <div id="map" class="map-wrapper">
+                <!-- 2GIS Map will be initialized here by script.js -->
             </div>
         </section>
 

@@ -56,6 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(el);
     });
 
+    // --- 2GIS Map Initialization ---
+    let map;
+    if (typeof DG !== 'undefined') {
+        DG.then(function () {
+            map = DG.map('map', {
+                center: [43.242465, 76.893026],
+                zoom: 16
+            });
+            DG.marker([43.242465, 76.893026]).addTo(map).bindPopup('Мы будем ждать вас здесь!');
+        });
+    }
+
     // --- Fireworks Effect ---
     function launchFireworks() {
         const duration = 5 * 1000;
@@ -82,25 +94,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(launchFireworks, 500);
 
-    // --- Music Controls ---
+    // --- Entry Screen & Music Logic ---
+    const entryScreen = document.getElementById('entry-screen');
+    const enterButton = document.getElementById('enter-button');
     const musicControl = document.getElementById('music-control');
     const backgroundMusic = document.getElementById('background-music');
 
-    if (musicControl && backgroundMusic) {
-        // Attempt to play muted audio on page load
-        backgroundMusic.play().catch(error => {
-            console.log("Autoplay was prevented.", error);
-            // Browser prevented autoplay, user must click to start.
+    if (enterButton && entryScreen && backgroundMusic && musicControl) {
+        enterButton.addEventListener('click', () => {
+            entryScreen.classList.add('hidden');
+
+            backgroundMusic.currentTime = 20; // Start from 20 seconds
+            backgroundMusic.muted = false;
+
+            backgroundMusic.play().then(() => {
+                // Music is playing
+                musicControl.classList.add('playing');
+            }).catch(error => {
+                console.log("Playback was prevented.", error);
+                // In case even user-initiated play fails, we don't show the 'playing' state.
+            });
         });
 
         musicControl.addEventListener('click', () => {
-            if (backgroundMusic.muted) {
-                backgroundMusic.muted = false;
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
                 musicControl.classList.add('playing');
             } else {
-                backgroundMusic.muted = true;
+                backgroundMusic.pause();
                 musicControl.classList.remove('playing');
             }
+            // Note: This is a simple play/pause toggle. The user's request
+            // was about unmuting on entry, so this provides further control.
+            // A mute/unmute toggle would be:
+            // backgroundMusic.muted = !backgroundMusic.muted;
+            // musicControl.classList.toggle('playing', !backgroundMusic.muted);
         });
     }
 });

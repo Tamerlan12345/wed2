@@ -56,13 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(el);
     });
 
-    // --- Parallax Effect ---
-    const parallaxBg = document.querySelector('.hero-bg-parallax');
-    if (parallaxBg) {
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.pageYOffset;
-            parallaxBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
-        });
-    }
-
 });

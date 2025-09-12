@@ -3,101 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свадьбу | Тамерлан и Ясмина</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Тамерлан и Ясмина | Приглашение на свадьбу</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header class="hero">
+        <div class="hero-bg-parallax"></div>
         <div class="hero-content">
-            <h1 id="guest-name" class="guest-name">Дорогие друзья и близкие!</h1>
-            <p class="intro-text">Мы рады пригласить вас на самое главное торжество нашей жизни – нашу свадьбу!</p>
+            <h1 id="guest-name" class="guest-greeting">Приглашаем Вас</h1>
+            <p class="hero-subtext">на нашу свадьбу</p>
             <h2 class="couple-names">Тамерлан & Ясмина</h2>
-            <div class="date">25.10.2025</div>
+            <p class="wedding-date">25 Октября 2025</p>
         </div>
     </header>
 
-    <section class="countdown">
-        <h3>До нашей свадьбы осталось</h3>
-        <div id="timer" class="timer">
-            <div class="timer-item"><span id="days">00</span><span>дней</span></div>
-            <div class="timer-item"><span id="hours">00</span><span>часов</span></div>
-            <div class="timer-item"><span id="minutes">00</span><span>минут</span></div>
-            <div class="timer-item"><span id="seconds">00</span><span>секунд</span></div>
-        </div>
-    </section>
-
-    <section class="story">
-        <h3>Наша история</h3>
-        <div class="story-gallery">
-            <img src="photo_5341489142447602236_y.jpg" alt="Тамерлан и Ясмина фото 1">
-            <img src="photo_5341489142447602237_y.jpg" alt="Тамерлан и Ясмина фото 2">
-            <img src="photo_5341489142447602238_y.jpg" alt="Тамерлан и Ясмина фото 3">
-        </div>
-        <p>И хотим отпраздновать этот день вместе с вами на природе — красиво, легко и по-настоящему душевно.</p>
-    </section>
-
-    <section class="program">
-        <h3>Программа мероприятия</h3>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="time">16:00</div>
-                <div class="event">Сбор гостей и приветственный фуршет</div>
+    <main>
+        <section class="countdown-section">
+            <h3 class="section-title">До события</h3>
+            <div id="timer" class="countdown-timer">
+                <div class="timer-block"><span id="days">00</span><span class="timer-label">Дней</span></div>
+                <div class="timer-block"><span id="hours">00</span><span class="timer-label">Часов</span></div>
+                <div class="timer-block"><span id="minutes">00</span><span class="timer-label">Минут</span></div>
+                <div class="timer-block"><span id="seconds">00</span><span class="timer-label">Секунд</span></div>
             </div>
-            <div class="timeline-item">
-                <div class="time">17:00</div>
-                <div class="event">Торжественная церемония</div>
+        </section>
+
+        <section class="story-section">
+            <h3 class="section-title">Наша История</h3>
+            <div class="gallery-container">
+                <div class="gallery-item large">
+                    <img src="photo_5341489142447602237_y.jpg" alt="История Тамерлана и Ясмины 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_5341489142447602236_y.jpg" alt="История Тамерлана и Ясмины 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo_5341489142447602238_y.jpg" alt="История Тамерлана и Ясмины 3">
+                </div>
             </div>
-            <div class="timeline-item">
-                <div class="time">18:00</div>
-                <div class="event">Банкет и развлекательная программа</div>
+            <p class="story-text">Разделяя одну мечту на двоих, мы решили соединить наши сердца. Мы будем рады видеть вас на нашем празднике любви.</p>
+        </section>
+
+        <section class="program-section">
+            <h3 class="section-title">Программа Дня</h3>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <span class="event-time">16:00</span>
+                    <span class="event-description">Сбор гостей и фуршет</span>
+                </div>
+                <div class="timeline-event">
+                    <span class="event-time">17:00</span>
+                    <span class="event-description">Церемония бракосочетания</span>
+                </div>
+                <div class="timeline-event">
+                    <span class="event-time">18:00</span>
+                    <span class="event-description">Банкет и начало вечера</span>
+                </div>
+                <div class="timeline-event">
+                    <span class="event-time">22:00</span>
+                    <span class="event-description">Праздничный торт</span>
+                </div>
             </div>
-             <div class="timeline-item">
-                <div class="time">22:00</div>
-                <div class="event">Праздничный торт и завершение вечера</div>
+        </section>
+
+        <section class="details-section">
+            <div class="details-column">
+                <h4 class="details-title">Дресс-код</h4>
+                <p>Мы будем благодарны, если вы выберете наряды в вечернем стиле, придерживаясь нашей цветовой палитры.</p>
+                <div class="color-palette">
+                    <span class="color-swatch" style="background-color: #2F4F4F;"></span>
+                    <span class="color-swatch" style="background-color: #C0C0C0;"></span>
+                    <span class="color-swatch" style="background-color: #F5F5F5; border: 1px solid #ddd;"></span>
+                    <span class="color-swatch" style="background-color: #D4AF37;"></span>
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="details-column">
+                <h4 class="details-title">Подарки</h4>
+                <p>Ваше присутствие — наш главный подарок. Если вы желаете сделать нам еще один приятный сюрприз, мы будем рады вашим пожеланиям в конвертах.</p>
+            </div>
+        </section>
 
-    <section class="dress-code">
-        <h3>Дресс-код</h3>
-        <p>Мы будем очень рады, если вы поддержите цветовую гамму нашей свадьбы в своих нарядах.</p>
-        <div class="palette">
-            <div class="color-box" style="background-color: #F3EBE0;" title="Champagne"></div>
-            <div class="color-box" style="background-color: #D4C1A9;" title="Beige"></div>
-            <div class="color-box" style="background-color: #A6907B;" title="Taupe"></div>
-            <div class="color-box" style="background-color: #8B7865;" title="Dusty Rose"></div>
-            <div class="color-box" style="background-color: #6D5D50;" title="Muted Brown"></div>
-        </div>
-        <p>Предпочтителен вечерний или коктейльный стиль (smart casual).</p>
-    </section>
+        <section class="location-section">
+            <h3 class="section-title">Место Проведения</h3>
+            <p class="venue-name">Горный курорт "Эльбрус"</p>
+            <div class="map-wrapper">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a1d7e2d9a6dfb4c73028c293121f64749f783084d5162a483e58315181789b7&amp;source=constructor" width="100%" height="450" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+            </div>
+        </section>
 
-    <section class="details">
-        <h3>Детали</h3>
-        <p>Ваше присутствие — лучший подарок для нас! Но если вы хотите сделать нам приятно, мы будем благодарны за ваш вклад в наш семейный бюджет в конвертах.</p>
-    </section>
+        <section class="rsvp-section">
+            <h3 class="section-title">Подтвердите Присутствие</h3>
+            <p>Пожалуйста, дайте нам знать о вашем решении до 1 октября 2025 года.</p>
+            <a href="mailto:tamerlan.yasmina.wedding@example.com?subject=Приглашение на свадьбу" class="rsvp-button">Я приду!</a>
+        </section>
+    </main>
 
-    <section class="location">
-        <h3>Место проведения</h3>
-        <h4>Горный курорт "Эльбрус"</h4>
-        <p>Мы будем ждать вас в одном из самых живописных мест!</p>
-        <div id="map" class="map-container">
-             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a1d7e2d9a6dfb4c73028c293121f64749f783084d5162a483e58315181789b7&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
-        </div>
-    </section>
-
-    <section class="rsvp">
-        <h3>Подтверждение присутствия</h3>
-        <p>Пожалуйста, подтвердите ваше присутствие до 1 октября 2025 года, чтобы мы могли всё спланировать.</p>
-        <a href="mailto:tamerlan.yasmina.wedding@example.com?subject=Приглашение на свадьбу Тамерлана и Ясмины" class="rsvp-button">Подтвердить присутствие</a>
-    </section>
-
-    <footer>
-        <p>С нетерпением ждём встречи с вами!</p>
-        <div class="footer-names">Тамерлан и Ясмина</div>
+    <footer class="site-footer">
+        <p>С любовью и нетерпением ждём нашей встречи!</p>
+        <p class="couple-names-footer">Тамерлан и Ясмина</p>
     </footer>
 
     <script src="script.js"></script>

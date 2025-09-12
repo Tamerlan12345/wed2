@@ -70,24 +70,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Entry Screen & Music Logic ---
     const entryScreen = document.getElementById('entry-screen');
-    const enterButton = document.getElementById('enter-button');
+    const entryTrigger = document.getElementById('entry-trigger');
+    const ringsImage = document.getElementById('rings-image');
     const musicControl = document.getElementById('music-control');
     const backgroundMusic = document.getElementById('background-music');
 
-    if (enterButton && entryScreen && backgroundMusic && musicControl) {
-        enterButton.addEventListener('click', () => {
-            entryScreen.classList.add('hidden');
+    function launchFireworks() {
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 2001 }; // z-index to be on top of entry screen
 
-            backgroundMusic.currentTime = 20; // Start from 20 seconds
+        function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+        const interval = setInterval(function() {
+            const timeLeft = animationEnd - Date.now();
+            if (timeLeft <= 0) { return clearInterval(interval); }
+            const particleCount = 50 * (timeLeft / duration);
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        }, 250);
+    }
+
+    if (entryTrigger && entryScreen && backgroundMusic && musicControl) {
+        entryTrigger.addEventListener('click', () => {
+            // 1. Launch fireworks
+            launchFireworks();
+
+            // 2. Animate rings image if it exists
+            if (ringsImage) {
+                ringsImage.classList.add('hidden');
+            }
+
+            // 3. Hide entry screen after a delay
+            setTimeout(() => {
+                entryScreen.classList.add('hidden');
+            }, 500); // Delay to let fireworks and image animation start
+
+            // 4. Start music
+            backgroundMusic.currentTime = 20;
             backgroundMusic.muted = false;
-
             backgroundMusic.play().then(() => {
-                // Music is playing
                 musicControl.classList.add('playing');
-            }).catch(error => {
-                console.log("Playback was prevented.", error);
-                // In case even user-initiated play fails, we don't show the 'playing' state.
-            });
+            }).catch(error => console.log("Playback was prevented.", error));
         });
 
         musicControl.addEventListener('click', () => {
@@ -98,11 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundMusic.pause();
                 musicControl.classList.remove('playing');
             }
-            // Note: This is a simple play/pause toggle. The user's request
-            // was about unmuting on entry, so this provides further control.
-            // A mute/unmute toggle would be:
-            // backgroundMusic.muted = !backgroundMusic.muted;
-            // musicControl.classList.toggle('playing', !backgroundMusic.muted);
         });
     }
 });

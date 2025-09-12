@@ -1,8 +1,8 @@
 :root {
-    --slate-blue: #2F4F4F;
-    --silver: #C0C0C0;
-    --cream: #F5F5F5;
-    --gold: #D4AF37;
+    --text-dark: #333333;
+    --bg-blush: #FFF8F8;
+    --accent-rose: #D9AAB7;
+    --accent-gold: #E1C49A;
     --white: #FFFFFF;
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Lato', sans-serif;
@@ -19,10 +19,41 @@ html {
     font-size: 16px;
 }
 
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+}
+
+.music-control.playing .icon-sound-on,
+.music-control .icon-sound-off {
+    display: block;
+}
+
+.music-control.playing .icon-sound-off,
+.music-control .icon-sound-on {
+    display: none;
+}
+
 body {
     font-family: var(--font-secondary);
     background-color: var(--white);
-    color: var(--slate-blue);
+    color: var(--text-dark);
     line-height: 1.7;
 }
 
@@ -33,7 +64,7 @@ main > section {
 }
 
 main > section:nth-of-type(odd) {
-    background-color: var(--cream);
+    background-color: var(--bg-blush);
 }
 
 img {
@@ -56,7 +87,7 @@ img {
     position: absolute;
     width: 50%;
     height: 2px;
-    background-color: var(--gold);
+    background-color: var(--accent-gold);
     bottom: -10px;
     left: 25%;
 }
@@ -114,7 +145,7 @@ img {
 .couple-names {
     font-family: var(--font-primary);
     font-size: 5rem;
-    color: var(--gold);
+    color: var(--accent-gold);
     margin: 1rem 0;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
@@ -145,7 +176,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 0.5rem;
-    color: var(--slate-blue);
+    color: var(--text-dark);
 }
 
 /* Story & Gallery */
@@ -184,7 +215,7 @@ img {
     margin: 0 auto;
     text-align: left;
     position: relative;
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid var(--accent-gold);
     padding-left: 2rem;
 }
 
@@ -213,7 +244,7 @@ img {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: var(--gold);
+    background-color: var(--accent-gold);
     border: 2px solid var(--white);
 }
 .event-time {
@@ -266,7 +297,7 @@ img {
 
 /* RSVP */
 .rsvp-section {
-    background-color: var(--slate-blue);
+    background-color: var(--accent-rose);
     color: var(--white);
 }
 .rsvp-section .section-title {
@@ -274,7 +305,7 @@ img {
 }
 .rsvp-button {
     display: inline-block;
-    background-color: var(--gold);
+    background-color: var(--accent-gold);
     color: var(--white);
     padding: 1rem 2.5rem;
     text-decoration: none;
@@ -286,20 +317,20 @@ img {
 }
 .rsvp-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px var(--accent-gold);
 }
 
 /* Footer */
 .site-footer {
     padding: 3rem 1.5rem;
-    background-color: var(--slate-blue);
-    color: var(--cream);
+    background-color: var(--text-dark);
+    color: var(--bg-blush);
     text-align: center;
 }
 .couple-names-footer {
     font-family: var(--font-primary);
     font-size: 2rem;
-    color: var(--gold);
+    color: var(--accent-gold);
 }
 
 

@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ringsImage = document.getElementById('rings-image');
     const musicControl = document.getElementById('music-control');
     const backgroundMusic = document.getElementById('background-music');
+    const mainContent = document.querySelector('main');
 
     function launchFireworks() {
         const duration = 3 * 1000;
@@ -104,7 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Hide entry screen after a delay
             setTimeout(() => {
                 entryScreen.classList.add('hidden');
-            }, 500); // Delay to let fireworks and image animation start
+                if (mainContent) {
+                    mainContent.classList.add('fade-in');
+                }
+            }, 800); // Adjusted delay for better animation flow
 
             // 4. Start music
             backgroundMusic.currentTime = 20;

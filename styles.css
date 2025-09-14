@@ -225,14 +225,15 @@ img {
 
 .wedding-date {
     font-family: var(--font-primary);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     letter-spacing: 1px;
     color: var(--text-dark);
+    margin-top: -1rem;
 }
 
 .date-section {
-    padding: 3rem 1.5rem;
-    background-color: var(--accent-pale);
+    padding: 5rem 1.5rem;
+    background-color: var(--white);
 }
 
 /* Countdown */
@@ -283,6 +284,9 @@ img {
     transform: scale(1.05);
     filter: brightness(1.08);
 }
+.gallery-item:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
 .story-text {
     max-width: 700px;
     margin: 0 auto;
@@ -300,11 +304,20 @@ img {
 }
 
 .timeline-event {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
     opacity: 0;
     transform: translateX(-30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
+    padding: 1rem 1.5rem;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.timeline-event:hover {
+    background-color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .program-section.visible .timeline-event {
@@ -554,27 +567,72 @@ main > section.visible, .site-footer.visible {
 @media (max-width: 768px) {
     html { font-size: 14px; }
 
+    main > section {
+        padding: 4rem 1rem;
+    }
+
+    .couple-names { font-size: 3.5rem; }
+    .section-title { font-size: 2.2rem; }
+    .wedding-date { font-size: 2rem; }
+
     .gallery-container {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding-bottom: 1.5rem; /* For scrollbar visibility */
+        padding: 0.5rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
     }
     .gallery-item {
-        flex: 0 0 80%; /* Each item takes 80% of the viewport width */
+        flex: 0 0 85%;
         scroll-snap-align: center;
+        margin: 0 0.5rem;
     }
 
-    .couple-names { font-size: 3.5rem; }
-    .section-title { font-size: 2.5rem; }
     .timeline {
-        border-left: none;
-        padding-left: 0;
+        border-left: 2px solid var(--accent-gold);
+        padding-left: 1.5rem;
+        margin-left: 1rem;
     }
     .timeline-event {
-        text-align: center;
+        text-align: left;
+        padding-left: 1rem;
+    }
+
+    .timeline-event::before {
+        left: -2.2rem;
+        top: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .details-section {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .couple-names { font-size: 2.8rem; }
+    .guest-greeting { font-size: 1.2rem; }
+    .entry-title { font-size: 3rem; }
+
+    .countdown-timer {
+        gap: 1rem;
+    }
+    .timer-block {
+        font-size: 2.5rem;
+    }
+
+    .timeline {
+        margin-left: 0.5rem;
+        padding-left: 1rem;
     }
     .timeline-event::before {
-        display: none;
+        left: -1.9rem;
+    }
+
+    .form-group-buttons {
+        flex-direction: column;
     }
 }

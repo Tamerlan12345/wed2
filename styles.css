@@ -85,24 +85,13 @@ html {
 .entry-title {
     font-family: var(--font-primary);
     font-size: 4rem;
-    color: var(--accent-gold);
+    color: var(--white);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .entry-text {
     font-size: 1.2rem;
     margin: 1rem 0 2rem;
-}
-
-.rings-image {
-    width: 120px; /* Slightly larger for better visibility */
-    height: auto;
-    margin-bottom: 2rem;
-    transition: opacity 0.5s ease;
-    animation: rings-enter 1s ease-out; /* Add entry animation */
-}
-
-.rings-image.hidden {
-    animation: animate-rings 1.2s ease-in-out forwards; /* Use new animation */
 }
 
 .entry-trigger {
@@ -229,14 +218,21 @@ img {
 .couple-names {
     font-family: var(--font-primary);
     font-size: 5rem;
-    color: var(--accent-gold);
+    color: var(--white);
     margin: 1rem 0;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .wedding-date {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+}
+
+.date-section {
+    padding: 3rem 1.5rem;
+    background-color: var(--accent-pale);
 }
 
 /* Countdown */
@@ -401,13 +397,6 @@ img {
     color: var(--text-dark);
 }
 
-.date-text-section {
-    padding: 2rem 1.5rem;
-    background-color: var(--accent-pale);
-    font-size: 1.2rem;
-    font-style: italic;
-}
-
 .map-wrapper {
     height: 450px;
     max-width: 900px;
@@ -417,30 +406,88 @@ img {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* RSVP */
-.rsvp-section {
-    background-color: var(--text-dark);
-    color: var(--white);
+/* New RSVP Form */
+.new-rsvp-section {
+    background-color: var(--accent-pale);
 }
-.rsvp-section .section-title {
-    color: var(--white);
+
+.rsvp-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
 }
-.rsvp-button {
-    display: inline-block;
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-secondary);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.form-group-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.rsvp-choice-button {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--accent-gold);
+    background-color: var(--white);
+    color: var(--accent-gold);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 50px;
+}
+
+.rsvp-choice-button:hover,
+.rsvp-choice-button.selected {
     background-color: var(--accent-gold);
     color: var(--white);
-    padding: 1rem 2.5rem;
-    text-decoration: none;
+}
+
+.rsvp-submit-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
     font-family: var(--font-primary);
     font-size: 1.2rem;
+    color: var(--white);
+    background-color: var(--accent-gold);
+    border: none;
     border-radius: 50px;
-    margin-top: 2rem;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.rsvp-button:hover {
+
+.rsvp-submit-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px var(--accent-gold);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+
 
 /* Footer */
 .site-footer {
@@ -489,28 +536,6 @@ main > section, .site-footer {
 main > section.visible, .site-footer.visible {
     opacity: 1;
     transform: translateY(0) rotateX(0);
-}
-
-@keyframes rings-enter {
-    from {
-        opacity: 0;
-        transform: scale(0.5) rotate(-30deg);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-@keyframes animate-rings {
-    0% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.5) rotate(360deg) translateY(-150px);
-    }
 }
 
 @keyframes breathing-button {

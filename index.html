@@ -23,17 +23,14 @@
 
     <div id="entry-screen" class="entry-screen">
         <div class="entry-content">
-            <!-- Когда вы загрузите изображение колец, добавьте его сюда с id="rings-image" -->
-            <img src="kolsa.png" alt="Wedding Rings" id="rings-image" class="rings-image">
-            <h2 class="entry-title">Тамерлан & Ясмина</h2>
-            <p class="entry-text">Приглашают вас на свою свадьбу</p>
+            <h2 class="entry-title">Тамерлан и Ясмина</h2>
             <span id="entry-trigger" class="entry-trigger">Открыть волшебное приглашение</span>
         </div>
     </div>
 
     <div id="music-control" class="music-control">
         <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-        <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9"x2="23" y2="15"></line></svg>
     </div>
 
     <header class="hero">
@@ -41,12 +38,15 @@
         <div class="hero-content">
             <h1 id="guest-name" class="guest-greeting">Приглашаем Вас</h1>
             <p class="hero-subtext">на нашу свадьбу</p>
-            <h2 class="couple-names">Тамерлан & Ясмина</h2>
-            <p class="wedding-date">25 Октября 2025</p>
+            <h2 class="couple-names">Тамерлан и Ясмина</h2>
         </div>
     </header>
 
     <main>
+        <section class="date-section">
+            <p class="wedding-date">Свадьба состоится 25 Октября 2025 г.</p>
+        </section>
+
         <section class="countdown-section">
             <h3 class="section-title">До события</h3>
             <div id="timer" class="countdown-timer">
@@ -76,6 +76,10 @@
         <section class="program-section">
             <h3 class="section-title">Программа Дня</h3>
             <div class="timeline">
+                <div class="timeline-event">
+                    <span class="event-time">17:30</span>
+                    <span class="event-description">Начало</span>
+                </div>
                 <div class="timeline-event">
                     <span class="event-time">17:00</span>
                     <span class="event-description">Сбор гостей и фуршет</span>
@@ -112,10 +116,6 @@
             </div>
         </section>
 
-        <section class="date-text-section">
-             <p>Торжество состоится 25 октября 2025 года.</p>
-        </section>
-
         <section class="location-section">
             <h3 class="section-title">Место Проведения</h3>
             <div class="venue-container">
@@ -129,10 +129,19 @@
             </div>
         </section>
 
-        <section class="rsvp-section">
-            <h3 class="section-title">Подтвердите Присутствие</h3>
-            <p>Пожалуйста, дайте нам знать о вашем решении до 1 октября 2025 года.</p>
-            <a href="mailto:tamerlan.yasmina.wedding@example.com?subject=Приглашение на свадьбу" class="rsvp-button">Я приду!</a>
+        <section class="new-rsvp-section">
+            <h3 class="section-title">Подтвердите свое присутствие</h3>
+            <form class="rsvp-form">
+                <div class="form-group">
+                    <label for="guest-names">Ваши имена</label>
+                    <input type="text" id="guest-names" name="guest-names" required>
+                </div>
+                <div class="form-group-buttons">
+                    <button type="button" class="rsvp-choice-button">Приду</button>
+                    <button type="button" class="rsvp-choice-button">Не приду</button>
+                </div>
+                <button type="submit" class="rsvp-submit-button">Отправить</button>
+            </form>
         </section>
     </main>
 

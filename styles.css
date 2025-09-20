@@ -137,16 +137,11 @@ main > section {
 }
 
 .section-divider {
-    text-align: center;
-    padding: 0 1.5rem;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.section-divider.visible {
-    opacity: 0.5;
-    transform: scale(1);
+    height: 1px;
+    margin: 4rem auto;
+    max-width: 300px;
+    background-color: rgba(180, 136, 107, 0.3);
+    border: 0;
 }
 
 main > section:nth-of-type(odd) {
@@ -551,6 +546,14 @@ img {
 .rsvp-submit-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.text-with-bg {
+    background-color: rgba(40, 40, 40, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 

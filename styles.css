@@ -136,6 +136,19 @@ main > section {
     overflow: hidden; /* For animations */
 }
 
+.section-divider {
+    text-align: center;
+    padding: 0 1.5rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.section-divider.visible {
+    opacity: 0.5;
+    transform: scale(1);
+}
+
 main > section:nth-of-type(odd) {
     background-color: var(--accent-pale);
 }
@@ -236,14 +249,14 @@ img {
 .char-animate {
     display: inline-block;
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    animation: char-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: translateY(50px) scale(0.8) rotate(10deg); /* Start further down and rotated */
+    animation: char-enter 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* Smoother, longer ease */
 }
 
 @keyframes char-enter {
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(1) rotate(0);
     }
 }
 
@@ -251,8 +264,9 @@ img {
 /* Section Title Animation */
 [data-animated] {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1); /* Smoother ease */
+    transition-delay: 0.1s;
 }
 [data-animated].animate {
     opacity: 1;

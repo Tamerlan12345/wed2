@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Countdown Timer ---
-    const countdownDate = new Date("2025-10-25T16:00:00").getTime();
+    const countdownDate = new Date("2025-10-25T16:00:00+05:00").getTime();
     const timerInterval = setInterval(() => {
         const now = new Date().getTime();
         const distance = countdownDate - now;
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const namesHeading = document.getElementById('couple-names-heading');
         if (!namesHeading) return;
 
-        const text = "Тамерлан и Ясмина";
+        const text = "Тамерлан & Ясмина";
         namesHeading.innerHTML = ''; // Clear existing content
 
         text.split('').forEach((char, index) => {

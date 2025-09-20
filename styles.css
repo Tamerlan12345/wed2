@@ -158,11 +158,16 @@ img {
 .section-title::after {
     content: '';
     position: absolute;
-    width: 50%;
+    width: 0%; /* Start at 0 width */
     height: 2px;
     background-color: var(--accent-gold);
     bottom: -10px;
     left: 25%;
+    transition: width 0.8s ease-out 0.3s; /* Animate width after a delay */
+}
+
+.section-title.animate::after {
+    width: 50%; /* Grow to 50% width when animated */
 }
 
 /* Hero Section */
@@ -221,7 +226,39 @@ img {
     color: var(--white);
     margin: 1rem 0;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    display: flex; /* Use flexbox for letter alignment */
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 1.2em; /* Prevent layout shift */
 }
+
+/* Character animation for couple names */
+.char-animate {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    animation: char-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes char-enter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Section Title Animation */
+[data-animated] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+[data-animated].animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .wedding-date {
     font-family: var(--font-primary);
@@ -271,8 +308,9 @@ img {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 12px; /* Softer radius */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Softer shadow */
+    transition: box-shadow 0.4s ease; /* Smooth transition */
 }
 .gallery-item img {
     width: 100%;
@@ -304,20 +342,20 @@ img {
 }
 
 .timeline-event {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Increased spacing */
     position: relative;
     opacity: 0;
     transform: translateX(-30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
-    padding: 1rem 1.5rem;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    padding: 1.2rem 1.5rem; /* Adjusted padding */
     background-color: #fdfdfd;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* Slightly adjusted shadow */
 }
 .timeline-event:hover {
     background-color: var(--white);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transform: translateY(-4px) scale(1.01); /* Adjusted hover effect */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
 }
 
 .program-section.visible .timeline-event {
@@ -571,7 +609,7 @@ main > section.visible, .site-footer.visible {
         padding: 4rem 1rem;
     }
 
-    .couple-names { font-size: 3.5rem; }
+    .couple-names { font-size: 3.2rem; } /* Adjusted */
     .section-title { font-size: 2.2rem; }
     .wedding-date { font-size: 2rem; }
 
@@ -579,15 +617,23 @@ main > section.visible, .site-footer.visible {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding: 0.5rem;
+        padding: 0.5rem 0;
         margin-left: -1rem;
         margin-right: -1rem;
+        scroll-padding: 0 1rem; /* Better snapping */
     }
     .gallery-item {
-        flex: 0 0 85%;
+        flex: 0 0 80%; /* Adjusted for peeking */
         scroll-snap-align: center;
-        margin: 0 0.5rem;
+        margin: 0 0.75rem;
     }
+    .gallery-item:first-child {
+        margin-left: 1rem;
+    }
+    .gallery-item:last-child {
+        margin-right: 1rem;
+    }
+
 
     .timeline {
         border-left: 2px solid var(--accent-gold);
@@ -608,20 +654,29 @@ main > section.visible, .site-footer.visible {
 
     .details-section {
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem; /* Increased gap */
+        text-align: center;
+    }
+    .details-column {
+        min-width: 100%; /* Full width on mobile */
+    }
+    .color-palette {
+        justify-content: center; /* Center the swatches */
     }
 }
 
 @media (max-width: 480px) {
-    .couple-names { font-size: 2.8rem; }
-    .guest-greeting { font-size: 1.2rem; }
-    .entry-title { font-size: 3rem; }
+    .couple-names { font-size: 2.5rem; } /* Adjusted */
+    .guest-greeting { font-size: 1.1rem; } /* Adjusted */
+    .entry-title { font-size: 2.8rem; } /* Adjusted */
+    .section-title { font-size: 2rem; } /* Adjusted */
+
 
     .countdown-timer {
         gap: 1rem;
     }
     .timer-block {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Adjusted */
     }
 
     .timeline {
@@ -634,5 +689,11 @@ main > section.visible, .site-footer.visible {
 
     .form-group-buttons {
         flex-direction: column;
+        gap: 0.8rem; /* Added gap */
+    }
+
+    .color-swatch {
+        width: 35px; /* Smaller swatches */
+        height: 35px;
     }
 }

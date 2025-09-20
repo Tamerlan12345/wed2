@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('main > section, .site-footer').forEach(el => {
+    document.querySelectorAll('main > section, .site-footer, .section-divider').forEach(el => {
         animationObserver.observe(el);
     });
 

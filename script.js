@@ -56,6 +56,43 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(el);
     });
 
+    const titleObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of the title is visible
+
+    document.querySelectorAll('[data-animated]').forEach(el => {
+        titleObserver.observe(el);
+    });
+
+
+    // --- Animate Couple Names ---
+    function animateCoupleNames() {
+        const namesHeading = document.getElementById('couple-names-heading');
+        if (!namesHeading) return;
+
+        const text = "Тамерлан и Ясмина";
+        namesHeading.innerHTML = ''; // Clear existing content
+
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            // Use a class for the animation and set delay via style
+            span.className = 'char-animate';
+            span.style.animationDelay = `${index * 0.07}s`;
+            // Handle space character
+            if (char === ' ') {
+                span.style.width = '0.5em';
+            }
+            namesHeading.appendChild(span);
+        });
+    }
+
+
     // --- 2GIS Map Initialization ---
     let map;
     if (typeof DG !== 'undefined') {
@@ -108,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mainContent) {
                     mainContent.classList.add('fade-in');
                 }
+                // Animate names when screen is hidden
+                animateCoupleNames();
             }, 800); // Adjusted delay for better animation flow
 
             // 4. Start music

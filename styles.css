@@ -1,7 +1,7 @@
 :root {
     --text-dark: #222222;
     --bg-ivory: #FFFFF0;
-    --accent-gold: #9EAC90;
+    --accent-gold: #B4886B;
     --accent-pale: #F0F8FF;
     --white: #FFFFFF;
     --font-primary: 'Playfair Display', serif;
@@ -302,7 +302,7 @@ img {
     font-family: var(--font-primary);
     font-size: 3rem;
     line-height: 1;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #9EAC90;
     padding: 1rem 1.5rem;
     border-radius: 12px;
 }

@@ -307,7 +307,7 @@ img {
     font-family: var(--font-primary);
     font-size: 3rem;
     line-height: 1;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
     padding: 1rem 1.5rem;
     border-radius: 12px;
 }

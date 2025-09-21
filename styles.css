@@ -2,7 +2,7 @@
     --text-dark: #222222;
     --bg-ivory: #FFFFF0;
     --accent-gold: #B4886B;
-    --accent-pale: #F0F8FF;
+    --accent-pale: #9EAC90;
     --white: #FFFFFF;
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Lato', sans-serif;
@@ -290,13 +290,6 @@ img {
     background-color: var(--white);
 }
 
-.countdown-section,
-.program-section,
-.new-rsvp-section,
-.location-section {
-    background-color: #9EAC90;
-}
-
 /* Countdown */
 .countdown-timer {
     display: flex;
@@ -567,7 +560,7 @@ img {
 }
 
 .text-with-bg {
-    background-color: #9EAC90;
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     border-radius: 12px;
     max-width: 700px;

@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800); // Adjusted delay for better animation flow
 
             // 4. Start music
-            backgroundMusic.currentTime = 20;
+            backgroundMusic.currentTime = 46;
             backgroundMusic.muted = false;
             backgroundMusic.play().then(() => {
                 musicControl.classList.add('playing');

@@ -140,7 +140,7 @@ main > section {
     height: 1px;
     margin: 4rem auto;
     max-width: 300px;
-    background-color: rgba(180, 136, 107, 0.3);
+    background-color: #9EAC90;
     border: 0;
     opacity: 0;
     transform: scale(0.8);
@@ -290,6 +290,11 @@ img {
     background-color: var(--white);
 }
 
+.countdown-section,
+.program-section {
+    background-color: #9EAC90;
+}
+
 /* Countdown */
 .countdown-timer {
     display: flex;
@@ -302,7 +307,7 @@ img {
     font-family: var(--font-primary);
     font-size: 3rem;
     line-height: 1;
-    background-color: #9EAC90;
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 1rem 1.5rem;
     border-radius: 12px;
 }

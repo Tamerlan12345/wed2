@@ -1,7 +1,7 @@
 :root {
     --text-dark: #222222;
     --bg-ivory: #FFFFF0;
-    --accent-gold: #B4886B;
+    --accent-gold: #9EAC90;
     --accent-pale: #F0F8FF;
     --white: #FFFFFF;
     --font-primary: 'Playfair Display', serif;
@@ -704,10 +704,14 @@ main > section.visible, .site-footer.visible {
 
 
     .countdown-timer {
-        gap: 1rem;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
     }
     .timer-block {
-        font-size: 2.2rem; /* Adjusted */
+        font-size: 2rem; /* Adjusted */
+        padding: 0.8rem 1rem;
     }
 
     .timeline {

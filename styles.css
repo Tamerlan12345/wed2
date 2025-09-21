@@ -291,7 +291,11 @@ img {
 }
 
 .countdown-section,
-.program-section {
+.program-section,
+.date-section,
+.story-section,
+.new-rsvp-section,
+.location-section {
     background-color: #9EAC90;
 }
 

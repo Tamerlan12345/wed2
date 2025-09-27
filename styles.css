@@ -535,7 +535,7 @@ img {
 }
 
 .rsvp-choice-button:hover,
-.rsvp-choice-button.selected {
+.rsvp-choice-button.active {
     background-color: var(--accent-gold);
     color: var(--white);
 }
@@ -557,6 +557,18 @@ img {
 .rsvp-submit-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.rsvp-message {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    color: var(--text-dark);
 }
 
 .text-with-bg {

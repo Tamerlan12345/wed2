@@ -1,8 +1,8 @@
 :root {
-    --text-dark: #222222;
-    --bg-ivory: #FFFFF0;
-    --accent-gold: #B4886B;
-    --accent-pale: #9EAC90;
+    --text-dark: #3E3B39;
+    --bg-main: #FDFBF7;
+    --accent-gold: #C09878;
+    --bg-secondary: #F4F1ED;
     --white: #FFFFFF;
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Lato', sans-serif;
@@ -125,7 +125,7 @@ main.fade-in {
 
 body {
     font-family: var(--font-secondary);
-    background-color: var(--bg-ivory);
+    background-color: var(--bg-main);
     color: var(--text-dark);
     line-height: 1.7;
 }
@@ -140,7 +140,7 @@ main > section {
     height: 1px;
     margin: 4rem auto;
     max-width: 300px;
-    background-color: #9EAC90;
+    background-color: var(--accent-gold);
     border: 0;
     opacity: 0;
     transform: scale(0.8);
@@ -153,7 +153,7 @@ main > section {
 }
 
 main > section:nth-of-type(odd) {
-    background-color: var(--accent-pale);
+    background-color: var(--bg-secondary);
 }
 
 img {
@@ -368,7 +368,7 @@ img {
     transform: translateX(-30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
     padding: 1.2rem 1.5rem; /* Adjusted padding */
-    background-color: #fdfdfd;
+    background-color: var(--white);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* Slightly adjusted shadow */
 }
@@ -479,7 +479,7 @@ img {
 
 /* New RSVP Form */
 .new-rsvp-section {
-    background-color: var(--accent-pale);
+    background-color: var(--bg-secondary);
 }
 
 .rsvp-form {
@@ -636,7 +636,7 @@ main > section.visible, .site-footer.visible {
     }
     50% {
         transform: scale(1.03);
-        box-shadow: 0 8px 25px rgba(180, 136, 107, 0.5);
+        box-shadow: 0 8px 25px rgba(192, 152, 120, 0.5);
     }
 }
 

@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const entryTrigger = document.getElementById('entry-trigger');
     const ringsImage = document.getElementById('rings-image');
     const musicControl = document.getElementById('music-control');
+    const instructionModal = document.getElementById('instruction-modal');
     const backgroundMusic = document.getElementById('background-music');
     const mainContent = document.querySelector('main');
 
@@ -147,6 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Animate names when screen is hidden
                 animateCoupleNames();
+
+                // Show instructional modal
+                if (instructionModal) {
+                    setTimeout(() => {
+                        instructionModal.classList.add('show');
+                        // Hide it after a few seconds
+                        setTimeout(() => {
+                            instructionModal.classList.remove('show');
+                        }, 4000); // Keep it on screen for 4 seconds
+                    }, 1000); // Show after 1 second
+                }
             }, 800); // Adjusted delay for better animation flow
 
             // 4. Start music
@@ -180,28 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestNamesInput = document.getElementById('guest-names');
     const rsvpMessage = document.getElementById('rsvp-message');
     const rsvpSection = document.getElementById('rsvp-section');
-    const modal = document.getElementById('rsvp-modal');
-    const modalMessage = document.getElementById('modal-message');
-    const closeButton = document.querySelector('.close-button');
-
-    function showModal(message) {
-        modalMessage.textContent = message;
-        modal.style.display = 'block';
-    }
-
-    function closeModal() {
-        modal.style.display = 'none';
-    }
-
-    if (closeButton) {
-        closeButton.onclick = closeModal;
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    }
 
     if (rsvpForm) {
         // Handle choice selection
@@ -223,11 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitButton = rsvpForm.querySelector('button[type="submit"]');
 
             if (!guestNames) {
-                showModal('Пожалуйста, введите ваши имена.');
+                alert('Пожалуйста, введите ваши имена.');
                 return;
             }
             if (!attendanceChoice) {
-                showModal('Пожалуйста, выберите, придете ли вы.');
+                alert('Пожалуйста, выберите, придете ли вы.');
                 return;
             }
 
@@ -240,18 +230,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (error) {
                 console.error('Error submitting RSVP:', error);
-                showModal('Произошла ошибка. Попробуйте еще раз.');
+                rsvpMessage.textContent = 'Произошла ошибка. Попробуйте еще раз.';
+                rsvpMessage.style.color = 'red';
+                rsvpMessage.style.display = 'block';
                 submitButton.disabled = false;
                 submitButton.textContent = 'Отправить';
             } else {
                 rsvpForm.style.display = 'none';
-                let successMessageText = '';
+                const successMessage = document.createElement('p');
                 if (attendanceChoice === 'attending') {
-                    successMessageText = 'Спасибо за подтверждение! Мы с нетерпением ждем вас на нашей свадьбе!';
+                    successMessage.textContent = 'Спасибо за ваше присутствие, мы будем рады видеть вас на свадьбе!';
                 } else {
-                    successMessageText = 'Спасибо за ваш ответ. Нам жаль, что вы не сможете присутствовать.';
+                    successMessage.textContent = 'Спасибо за ваш ответ. Жаль, что у вас не получится прийти.';
                 }
-                showModal(successMessageText);
+
+                rsvpMessage.appendChild(successMessage);
+                rsvpMessage.style.display = 'block';
                 rsvpSection.scrollIntoView({ behavior: 'smooth' });
             }
         });

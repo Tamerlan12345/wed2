@@ -180,6 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestNamesInput = document.getElementById('guest-names');
     const rsvpMessage = document.getElementById('rsvp-message');
     const rsvpSection = document.getElementById('rsvp-section');
+    const modal = document.getElementById('rsvp-modal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeButton = document.querySelector('.close-button');
+
+    function showModal(message) {
+        modalMessage.textContent = message;
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    if (closeButton) {
+        closeButton.onclick = closeModal;
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
 
     if (rsvpForm) {
         // Handle choice selection
@@ -201,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitButton = rsvpForm.querySelector('button[type="submit"]');
 
             if (!guestNames) {
-                alert('Пожалуйста, введите ваши имена.');
+                showModal('Пожалуйста, введите ваши имена.');
                 return;
             }
             if (!attendanceChoice) {
-                alert('Пожалуйста, выберите, придете ли вы.');
+                showModal('Пожалуйста, выберите, придете ли вы.');
                 return;
             }
 
@@ -218,22 +240,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (error) {
                 console.error('Error submitting RSVP:', error);
-                rsvpMessage.textContent = 'Произошла ошибка. Попробуйте еще раз.';
-                rsvpMessage.style.color = 'red';
-                rsvpMessage.style.display = 'block';
+                showModal('Произошла ошибка. Попробуйте еще раз.');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Отправить';
             } else {
                 rsvpForm.style.display = 'none';
-                const successMessage = document.createElement('p');
+                let successMessageText = '';
                 if (attendanceChoice === 'attending') {
-                    successMessage.textContent = 'Спасибо за ваше присутствие, мы будем рады видеть вас на свадьбе!';
+                    successMessageText = 'Спасибо за подтверждение! Мы с нетерпением ждем вас на нашей свадьбе!';
                 } else {
-                    successMessage.textContent = 'Спасибо за ваш ответ. Жаль, что у вас не получится прийти.';
+                    successMessageText = 'Спасибо за ваш ответ. Нам жаль, что вы не сможете присутствовать.';
                 }
-
-                rsvpMessage.appendChild(successMessage);
-                rsvpMessage.style.display = 'block';
+                showModal(successMessageText);
                 rsvpSection.scrollIntoView({ behavior: 'smooth' });
             }
         });

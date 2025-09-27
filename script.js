@@ -167,4 +167,75 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Supabase RSVP Form Logic ---
+    const supabaseUrl = 'https://ydwpkhdbmwgbsyqoxhoc.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3BraGRibXdnYnN5cW94aG9jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5ODIyNjEsImV4cCI6MjA3NDU1ODI2MX0.7SXQprytxgyGEobrTJVjO40ELkQTB2LaLnt5ZCavzCY';
+    const { createClient } = supabase;
+    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const choiceButtons = document.querySelectorAll('.rsvp-choice-button');
+    const hiddenChoiceInput = document.getElementById('attendance-choice');
+    const guestNamesInput = document.getElementById('guest-names');
+    const rsvpMessage = document.getElementById('rsvp-message');
+    const rsvpSection = document.getElementById('rsvp-section');
+
+    if (rsvpForm) {
+        // Handle choice selection
+        choiceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const choice = button.getAttribute('data-choice');
+                hiddenChoiceInput.value = choice;
+                choiceButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Handle form submission
+        rsvpForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const guestNames = guestNamesInput.value.trim();
+            const attendanceChoice = hiddenChoiceInput.value;
+            const submitButton = rsvpForm.querySelector('button[type="submit"]');
+
+            if (!guestNames) {
+                alert('Пожалуйста, введите ваши имена.');
+                return;
+            }
+            if (!attendanceChoice) {
+                alert('Пожалуйста, выберите, придете ли вы.');
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+
+            const { error } = await supabaseClient
+                .from('rsvps')
+                .insert([{ guest_names: guestNames, attending: attendanceChoice === 'attending' }]);
+
+            if (error) {
+                console.error('Error submitting RSVP:', error);
+                rsvpMessage.textContent = 'Произошла ошибка. Попробуйте еще раз.';
+                rsvpMessage.style.color = 'red';
+                rsvpMessage.style.display = 'block';
+                submitButton.disabled = false;
+                submitButton.textContent = 'Отправить';
+            } else {
+                rsvpForm.style.display = 'none';
+                const successMessage = document.createElement('p');
+                if (attendanceChoice === 'attending') {
+                    successMessage.textContent = 'Спасибо за ваше присутствие, мы будем рады видеть вас на свадьбе!';
+                } else {
+                    successMessage.textContent = 'Спасибо за ваш ответ. Жаль, что у вас не получится прийти.';
+                }
+
+                rsvpMessage.appendChild(successMessage);
+                rsvpMessage.style.display = 'block';
+                rsvpSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 });

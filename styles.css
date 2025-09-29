@@ -318,31 +318,39 @@ img {
 }
 
 /* Story & Gallery */
-.gallery-container {
+.gallery-container,
+.new-gallery-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     max-width: 1100px;
-    margin: 0 auto 3rem;
+    margin: 0 auto;
 }
-.gallery-item {
+.gallery-container {
+    margin-bottom: 3rem;
+}
+.gallery-item,
+.new-gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 12px; /* Softer radius */
     box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Softer shadow */
     transition: box-shadow 0.4s ease; /* Smooth transition */
 }
-.gallery-item img {
+.gallery-item img,
+.new-gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.gallery-item:hover img {
+.gallery-item:hover img,
+.new-gallery-item:hover img {
     transform: scale(1.05);
     filter: brightness(1.08);
 }
-.gallery-item:hover {
+.gallery-item:hover,
+.new-gallery-item:hover {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 .story-text {
@@ -682,7 +690,8 @@ main > section.visible, .site-footer.visible {
     .section-title { font-size: 2.2rem; }
     .wedding-date { font-size: 2rem; }
 
-    .gallery-container {
+    .gallery-container,
+    .new-gallery-container {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -691,7 +700,8 @@ main > section.visible, .site-footer.visible {
         margin-right: -1rem;
         scroll-padding: 0 1rem; /* Better snapping */
     }
-    .gallery-item {
+    .gallery-item,
+    .new-gallery-item {
         flex: 0 0 80%; /* Adjusted for peeking */
         scroll-snap-align: center;
         margin: 0 0.75rem;
@@ -699,10 +709,12 @@ main > section.visible, .site-footer.visible {
     .gallery-container .gallery-item:nth-child(1) { order: 2; }
     .gallery-container .gallery-item:nth-child(2) { order: 1; }
     .gallery-container .gallery-item:nth-child(3) { order: 3; }
-    .gallery-item:first-child {
+    .gallery-item:first-child,
+    .new-gallery-item:first-child {
         margin-left: 1rem;
     }
-    .gallery-item:last-child {
+    .gallery-item:last-child,
+    .new-gallery-item:last-child {
         margin-right: 1rem;
     }
 
@@ -710,38 +722,6 @@ main > section.visible, .site-footer.visible {
     padding: 5rem 1.5rem;
     text-align: center;
     overflow: hidden;
-}
-
-.new-gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.new-gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    transition: box-shadow 0.4s ease;
-}
-
-.new-gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.new-gallery-item:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.08);
-}
-
-.new-gallery-item:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 
@@ -774,29 +754,6 @@ main > section.visible, .site-footer.visible {
         justify-content: center; /* Center the swatches */
     }
 
-    .new-gallery-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 0.5rem 0;
-        margin-left: -1rem;
-        margin-right: -1rem;
-        scroll-padding: 0 1rem;
-    }
-
-    .new-gallery-container .new-gallery-item {
-        flex: 0 0 80%;
-        scroll-snap-align: center;
-        margin: 0 0.75rem;
-    }
-
-    .new-gallery-container .new-gallery-item:first-child {
-        margin-left: 1rem;
-    }
-
-    .new-gallery-container .new-gallery-item:last-child {
-        margin-right: 1rem;
-    }
 }
 
 @media (max-width: 480px) {

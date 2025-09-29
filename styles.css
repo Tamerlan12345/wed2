@@ -716,7 +716,7 @@ main > section.visible, .site-footer.visible {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    max-width: 1100px;
+    max-width: 900px; /* Reduced max-width to make the container smaller */
     margin: 0 auto;
 }
 
@@ -802,8 +802,27 @@ main > section.visible, .site-footer.visible {
     }
 
     .new-gallery-container {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0.5rem 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        scroll-padding: 0 1rem;
+    }
+
+    .new-gallery-container .new-gallery-item {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+        margin: 0 0.75rem;
+    }
+
+    .new-gallery-container .new-gallery-item:first-child {
+        margin-left: 1rem;
+    }
+
+    .new-gallery-container .new-gallery-item:last-child {
+        margin-right: 1rem;
     }
 }
 

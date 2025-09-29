@@ -162,11 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800); // Adjusted delay for better animation flow
 
             // 4. Start music
-            backgroundMusic.currentTime = 46;
+            backgroundMusic.currentTime = 16;
             backgroundMusic.muted = false;
             backgroundMusic.play().then(() => {
                 musicControl.classList.add('playing');
             }).catch(error => console.log("Playback was prevented.", error));
+        });
+
+        backgroundMusic.addEventListener('timeupdate', function() {
+            if (this.currentTime >= 60) {
+                this.currentTime = 16;
+            }
         });
 
         musicControl.addEventListener('click', () => {

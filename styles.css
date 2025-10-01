@@ -318,8 +318,7 @@ img {
 }
 
 /* Story & Gallery */
-.gallery-container,
-.new-gallery-container {
+.gallery-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
@@ -329,35 +328,26 @@ img {
 .gallery-container {
     margin-bottom: 3rem;
 }
-.gallery-item,
-.new-gallery-item {
+.gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 12px; /* Softer radius */
     box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Softer shadow */
     transition: box-shadow 0.4s ease; /* Smooth transition */
 }
-.gallery-item img,
-.new-gallery-item img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.gallery-item:hover img,
-.new-gallery-item:hover img {
+.gallery-item:hover img {
     transform: scale(1.05);
     filter: brightness(1.08);
 }
-.gallery-item:hover,
-.new-gallery-item:hover {
+.gallery-item:hover {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
-
-/* Custom order for new gallery on desktop */
-.new-gallery-container .new-gallery-item:nth-child(1) { order: 1; } /* IMG_8289.jpeg */
-.new-gallery-container .new-gallery-item:nth-child(2) { order: 3; } /* IMG_8288.jpeg */
-.new-gallery-container .new-gallery-item:nth-child(3) { order: 2; } /* IMG_8287.jpeg */
 
 .story-text {
     max-width: 700px;
@@ -696,8 +686,7 @@ main > section.visible, .site-footer.visible {
     .section-title { font-size: 2.2rem; }
     .wedding-date { font-size: 2rem; }
 
-    .gallery-container,
-    .new-gallery-container {
+    .gallery-container {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -706,8 +695,7 @@ main > section.visible, .site-footer.visible {
         margin-right: -1rem;
         scroll-padding: 0 1rem; /* Better snapping */
     }
-    .gallery-item,
-    .new-gallery-item {
+    .gallery-item {
         flex: 0 0 80%; /* Adjusted for peeking */
         scroll-snap-align: center;
         margin: 0 0.75rem;
@@ -715,25 +703,12 @@ main > section.visible, .site-footer.visible {
     .gallery-container .gallery-item:nth-child(1) { order: 2; }
     .gallery-container .gallery-item:nth-child(2) { order: 1; }
     .gallery-container .gallery-item:nth-child(3) { order: 3; }
-    .gallery-item:first-child,
-    .new-gallery-item:first-child {
+    .gallery-item:first-child {
         margin-left: 1rem;
     }
-    .gallery-item:last-child,
-    .new-gallery-item:last-child {
+    .gallery-item:last-child {
         margin-right: 1rem;
     }
-
-    /* Custom order for new gallery on mobile */
-    .new-gallery-container .new-gallery-item:nth-child(1) { order: 2; } /* IMG_8289.jpeg */
-    .new-gallery-container .new-gallery-item:nth-child(2) { order: 3; } /* IMG_8288.jpeg */
-    .new-gallery-container .new-gallery-item:nth-child(3) { order: 1; } /* IMG_8287.jpeg */
-
-.new-story-section {
-    padding: 5rem 1.5rem;
-    text-align: center;
-    overflow: hidden;
-}
 
 
     .timeline {

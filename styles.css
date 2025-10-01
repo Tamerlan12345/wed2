@@ -355,15 +355,10 @@ img {
 }
 
 /* Custom order for new gallery on desktop */
-.new-gallery-container {
-    display: grid; /* Ensure it's a grid container */
-}
-.new-gallery-item {
-    display: flex; /* Ensure items are flex for ordering */
-}
 .new-gallery-container .new-gallery-item:nth-child(1) { order: 1; } /* IMG_8289.jpeg */
 .new-gallery-container .new-gallery-item:nth-child(2) { order: 3; } /* IMG_8288.jpeg */
 .new-gallery-container .new-gallery-item:nth-child(3) { order: 2; } /* IMG_8287.jpeg */
+
 .story-text {
     max-width: 700px;
     margin: 0 auto;

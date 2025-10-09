@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Countdown Timer ---
+
     const countdownDate = new Date("2025-10-25T16:00:00+05:00").getTime();
     const timerInterval = setInterval(() => {
         const now = new Date().getTime();

@@ -71,26 +71,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Animate Couple Names ---
-    function animateCoupleNames() {
-        const namesHeading = document.getElementById('couple-names-heading');
-        if (!namesHeading) return;
+    // function animateCoupleNames() {
+    //     const namesHeading = document.getElementById('couple-names-heading');
+    //     if (!namesHeading) return;
 
-        const text = "Тамерлан & Ясмина";
-        namesHeading.innerHTML = ''; // Clear existing content
+    //     const text = "Тамерлан & Ясмина";
+    //     namesHeading.innerHTML = ''; // Clear existing content
 
-        text.split('').forEach((char, index) => {
-            const span = document.createElement('span');
-            span.textContent = char;
-            // Use a class for the animation and set delay via style
-            span.className = 'char-animate';
-            span.style.animationDelay = `${index * 0.07}s`;
-            // Handle space character
-            if (char === ' ') {
-                span.style.width = '0.5em';
-            }
-            namesHeading.appendChild(span);
-        });
-    }
+    //     text.split('').forEach((char, index) => {
+    //         const span = document.createElement('span');
+    //         span.textContent = char;
+    //         // Use a class for the animation and set delay via style
+    //         span.className = 'char-animate';
+    //         span.style.animationDelay = `${index * 0.07}s`;
+    //         // Handle space character
+    //         if (char === ' ') {
+    //             span.style.width = '0.5em';
+    //         }
+    //         namesHeading.appendChild(span);
+    //     });
+    // }
 
 
     // --- 2GIS Map Initialization ---
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mainContent.classList.add('fade-in');
                 }
                 // Animate names when screen is hidden
-                animateCoupleNames();
+                // animateCoupleNames();
 
                 // Show instructional modal
                 if (instructionModal) {
@@ -187,10 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Supabase RSVP Form Logic ---
-    const supabaseUrl = 'https://ydwpkhdbmwgbsyqoxhoc.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3BraGRibXdnYnN5cW94aG9jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5ODIyNjEsImV4cCI6MjA3NDU1ODI2MX0.7SXQprytxgyGEobrTJVjO40ELkQTB2LaLnt5ZCavzCY';
-    const { createClient } = supabase;
-    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    // const supabaseUrl = 'https://ydwpkhdbmwgbsyqoxhoc.supabase.co';
+    // const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkd3BraGRibXdnYnN5cW94aG9jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5ODIyNjEsImV4cCI6MjA3NDU1ODI2MX0.7SXQprytxgyGEobrTJVjO40ELkQTB2LaLnt5ZCavzCY';
+    // const { createClient } = supabase;
+    // const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
     const rsvpForm = document.getElementById('rsvp-form');
     const choiceButtons = document.querySelectorAll('.rsvp-choice-button');
@@ -199,61 +199,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const rsvpMessage = document.getElementById('rsvp-message');
     const rsvpSection = document.getElementById('rsvp-section');
 
-    if (rsvpForm) {
-        // Handle choice selection
-        choiceButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const choice = button.getAttribute('data-choice');
-                hiddenChoiceInput.value = choice;
-                choiceButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-            });
-        });
+    // if (rsvpForm) {
+    //     // Handle choice selection
+    //     choiceButtons.forEach(button => {
+    //         button.addEventListener('click', () => {
+    //             const choice = button.getAttribute('data-choice');
+    //             hiddenChoiceInput.value = choice;
+    //             choiceButtons.forEach(btn => btn.classList.remove('active'));
+    //             button.classList.add('active');
+    //         });
+    //     });
 
-        // Handle form submission
-        rsvpForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+    //     // Handle form submission
+    //     rsvpForm.addEventListener('submit', async (event) => {
+    //         event.preventDefault();
 
-            const guestNames = guestNamesInput.value.trim();
-            const attendanceChoice = hiddenChoiceInput.value;
-            const submitButton = rsvpForm.querySelector('button[type="submit"]');
+    //         const guestNames = guestNamesInput.value.trim();
+    //         const attendanceChoice = hiddenChoiceInput.value;
+    //         const submitButton = rsvpForm.querySelector('button[type="submit"]');
 
-            if (!guestNames) {
-                alert('Пожалуйста, введите ваши имена.');
-                return;
-            }
-            if (!attendanceChoice) {
-                alert('Пожалуйста, выберите, придете ли вы.');
-                return;
-            }
+    //         if (!guestNames) {
+    //             alert('Пожалуйста, введите ваши имена.');
+    //             return;
+    //         }
+    //         if (!attendanceChoice) {
+    //             alert('Пожалуйста, выберите, придете ли вы.');
+    //             return;
+    //         }
 
-            submitButton.disabled = true;
-            submitButton.textContent = 'Отправка...';
+    //         submitButton.disabled = true;
+    //         submitButton.textContent = 'Отправка...';
 
-            const { error } = await supabaseClient
-                .from('rsvps')
-                .insert([{ guest_names: guestNames, attending: attendanceChoice === 'attending' }]);
+    //         const { error } = await supabaseClient
+    //             .from('rsvps')
+    //             .insert([{ guest_names: guestNames, attending: attendanceChoice === 'attending' }]);
 
-            if (error) {
-                console.error('Error submitting RSVP:', error);
-                rsvpMessage.textContent = 'Произошла ошибка. Попробуйте еще раз.';
-                rsvpMessage.style.color = 'red';
-                rsvpMessage.style.display = 'block';
-                submitButton.disabled = false;
-                submitButton.textContent = 'Отправить';
-            } else {
-                rsvpForm.style.display = 'none';
-                const successMessage = document.createElement('p');
-                if (attendanceChoice === 'attending') {
-                    successMessage.textContent = 'Спасибо за ваше присутствие, мы будем рады видеть вас на свадьбе!';
-                } else {
-                    successMessage.textContent = 'Спасибо за ваш ответ. Жаль, что у вас не получится прийти.';
-                }
+    //         if (error) {
+    //             console.error('Error submitting RSVP:', error);
+    //             rsvpMessage.textContent = 'Произошла ошибка. Попробуйте еще раз.';
+    //             rsvpMessage.style.color = 'red';
+    //             rsvpMessage.style.display = 'block';
+    //             submitButton.disabled = false;
+    //             submitButton.textContent = 'Отправить';
+    //         } else {
+    //             rsvpForm.style.display = 'none';
+    //             const successMessage = document.createElement('p');
+    //             if (attendanceChoice === 'attending') {
+    //                 successMessage.textContent = 'Спасибо за ваше присутствие, мы будем рады видеть вас на свадьбе!';
+    //             } else {
+    //                 successMessage.textContent = 'Спасибо за ваш ответ. Жаль, что у вас не получится прийти.';
+    //             }
 
-                rsvpMessage.appendChild(successMessage);
-                rsvpMessage.style.display = 'block';
-                rsvpSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
+    //             rsvpMessage.appendChild(successMessage);
+    //             rsvpMessage.style.display = 'block';
+    //             rsvpSection.scrollIntoView({ behavior: 'smooth' });
+    //         }
+    //     });
+    // }
 });

@@ -279,7 +279,8 @@ img {
 
 .wedding-date {
     font-family: var(--font-primary);
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 700;
     letter-spacing: 1px;
     color: var(--text-dark);
     margin-top: -1rem;
@@ -416,6 +417,12 @@ img {
     max-width: 900px;
     margin: 0 auto;
 }
+
+.emphasized-section {
+    background-color: #f7f5f2 !important;
+    border-top: 1px solid var(--accent-gold);
+    border-bottom: 1px solid var(--accent-gold);
+}
 .details-column {
     flex: 1;
     min-width: 280px;
@@ -449,7 +456,8 @@ img {
 }
 .venue-name {
     font-family: var(--font-primary);
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 0; /* Adjusted margin */
 }
 .address-link {
